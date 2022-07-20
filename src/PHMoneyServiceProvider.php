@@ -8,7 +8,7 @@ use Kainotomo\PHMoney\Listeners\TeamEventSubscriber;
 use Laravel\Jetstream\Events\TeamCreated;
 use Laravel\Jetstream\Events\TeamDeleted;
 
-class PHMoneyServiceCms extends ServiceProvider
+class PHMoneyServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
@@ -17,7 +17,9 @@ class PHMoneyServiceCms extends ServiceProvider
      */
     public function register()
     {
-        
+        $this->mergeConfigFrom(__DIR__.'/../config/phmoney.php', 'phmoney');
+        $this->mergeConfigFrom(__DIR__.'/../config/database.php', 'database.connections');
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
     }
 
     /**
@@ -27,7 +29,19 @@ class PHMoneyServiceCms extends ServiceProvider
      */
     public function boot()
     {
-        
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'phmoney');
+        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+
+        Event::listen(
+            TeamCreated::class,
+            [TeamEventSubscriber::class, 'handleTeamCreated']
+        );
+        Event::listen(
+            TeamDeleted::class,
+            [TeamEventSubscriber::class, 'handleTeamDeleted']
+        );
+
+        $this->notRunningInConsole();
 
     }
 
