@@ -1,0 +1,58 @@
+{
+    "name": "kainotomo/phmoney_cms",
+    "type": "library",
+    "description": "PHMoney Double-Entry Accounting Program laravel CMS.",
+    "keywords": [
+        "laravel",
+        "accounting",
+        "invoice",
+        "software",
+        "online"
+    ],
+    "license": "GPL-3.0+",
+    "support": {
+        "issues": "https://github.com/kainotomo/phmoney/issues",
+        "source": "https://github.com/kainotomo/phmoney"
+    },
+    "authors": [
+        {
+            "name": "KAINOTOMO PH LTD",
+            "email": "info@kainotomo.com"
+        }
+    ],
+    "require": {
+        "laravel/jetstream": "^2.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "Kainotomo\\PHMoney\\Cms\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "App\\": "stubs/app/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Kainotomo\\PHMoney\\PHMoneyServiceCms"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimun-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "post-install-cmd": [
+            "@php artisan phmoney_cms:install",
+            "@php artisan phmoney_cms:update",
+            "@php artisan migrate"
+        ],
+        "post-update-cmd": [
+            "@php artisan phmoney_cms:update"
+        ]
+    }
+}
