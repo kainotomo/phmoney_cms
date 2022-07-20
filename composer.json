@@ -25,7 +25,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Kainotomo\\PHMoney\\Cms\\": "src/"
+            "Kainotomo\\PHMoney\\": "src/"
         }
     },
     "autoload-dev": {
