@@ -16,7 +16,7 @@ class InstallCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'phmoney_provider:install {--composer=global : Absolute path to the Composer binary which should be used to install packages}';
+    protected $signature = 'phmoney_cms:install {--composer=global : Absolute path to the Composer binary which should be used to install packages}';
 
     /**
      * The console command description.

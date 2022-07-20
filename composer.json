@@ -48,12 +48,12 @@
     "prefer-stable": true,
     "scripts": {
         "post-install-cmd": [
-            "@php artisan phmoney_provider:install",
-            "@php artisan phmoney_provider:update",
+            "@php artisan phmoney_cms:install",
+            "@php artisan phmoney_cms:update",
             "@php artisan migrate"
         ],
         "post-update-cmd": [
-            "@php artisan phmoney_provider:update"
+            "@php artisan phmoney_cms:update"
         ]
     }
 }
