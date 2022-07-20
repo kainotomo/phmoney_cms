@@ -28,11 +28,6 @@
             "Kainotomo\\PHMoney\\": "src/"
         }
     },
-    "autoload-dev": {
-        "psr-4": {
-            "App\\": "stubs/app/"
-        }
-    },
     "extra": {
         "laravel": {
             "providers": [
@@ -44,15 +39,5 @@
         "sort-packages": true
     },
     "minimun-stability": "dev",
-    "prefer-stable": true,
-    "scripts": {
-        "post-install-cmd": [
-            "@php artisan phmoney_cms:install",
-            "@php artisan phmoney_cms:update",
-            "@php artisan migrate"
-        ],
-        "post-update-cmd": [
-            "@php artisan phmoney_cms:update"
-        ]
-    }
+    "prefer-stable": true
 }
