@@ -12,14 +12,6 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    @guest
-                    <x-jet-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')">
-                        {{ __('Login') }}
-                    </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')">
-                        {{ __('Register') }}
-                    </x-jet-nav-link>
-                    @endguest
                     @auth
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
@@ -28,6 +20,19 @@
                 </div>
             </div>
 
+            <div class="hidden sm:flex sm:items-center sm:ml-6 gap-4">
+                @guest
+                <x-jet-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')">
+                    {{ __('Sign in') }}
+                </x-jet-nav-link>
+                <a href="{{ route('register') }}" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest bg-sky-600 hover:bg-sky-500 active:bg-sky-700 focus:outline-none focus:border-sky-700 focus:ring focus:ring-sky-100 disabled:opacity-50 transition">
+                    {{ __('Get Started') }}
+                </a>
+                @endguest
+                @auth
+                @endauth
+            </div>
+            
             @auth
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <!-- Teams Dropdown -->
@@ -151,10 +156,10 @@
         <div class="pt-2 pb-3 space-y-1">
             @guest
             <x-jet-responsive-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')">
-                {{ __('Login') }}
+                {{ __('Sign In') }}
             </x-jet-responsive-nav-link>
             <x-jet-responsive-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')">
-                {{ __('Register') }}
+                {{ __('Get Started') }}
             </x-jet-responsive-nav-link>
             @endguest
             @auth
